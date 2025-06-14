@@ -22,6 +22,17 @@ El **Monitoreo de Tareas Epicor** es una aplicación en Python diseñada para vi
 
 -----
 
+## 🚀 ¿Prefieres ir Directo al Grano? ¡Descarga el Release\!
+
+Si solo quieres usar la aplicación y no te interesa su desarrollo, puedes descargar la última versión estable directamente desde la sección de **Releases de GitHub**. Esto te dará un archivo `.zip` o `.tar.gz` con todo lo necesario (excluyendo tus configuraciones sensibles).
+
+1.  Ve a la pestaña **[Releases](https://github.com/SopHardware/MonitorTasks/releases/tag/v1.0.0)** de este repositorio.
+2.  Busca la última versión (la que tenga la etiqueta más alta, por ejemplo, `v1.0.0`).
+3.  Descarga el archivo `.zip` o `.tar.gz` asociado al "Source code".
+4.  Descomprime el archivo en la ubicación que prefieras en tu servidor de monitoreo.
+5.  Sigue los pasos de **Configuración** y **Ejecución** a continuación para ponerla en marcha.
+-----
+
 ## 🛠️ ¡Manos a la Obra\! Configuración Rápida
 
 Para poner en marcha tu monitor, necesitarás algunos preparativos y una configuración sencilla.
@@ -38,11 +49,9 @@ Para poner en marcha tu monitor, necesitarás algunos preparativos y una configu
 1.  **Clona el proyecto:**
 
     ```bash
-    git clone https://github.com/SopHardware/MonitorTasks
+    git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/SopHardware/MonitorTasks)
     cd tu-repositorio-monitoreo
     ```
-
-    *(No olvides reemplazar `tu-usuario/tu-repositorio.git` con la dirección real de tu repo)*
 
 2.  **Crea y activa tu entorno virtual:**
 
@@ -113,13 +122,10 @@ Esta aplicación está diseñada para ejecutarse periódicamente, ¡idealmente c
 ### Configuración en el Programador de Tareas de Windows
 
 1.  Abre el **Programador de Tareas** (búscalo en el menú de inicio).
-2.  Haz clic en **"Crear tarea..."** en el panel de acciones (te da más control que la "tarea básica").
-3.  **Pestaña General:** Ponle un nombre fácil de recordar, como `Monitor de Tareas Epicor`.
-4.  **Pestaña Desencadenadores:**
-      * Haz clic en **"Nuevo..."**.
-      * Configura que la tarea se repita, por ejemplo, **`cada 5 minutos`** (o el valor de `check_interval_minutes` en tu `config.ini`).
-      * Selecciona `Indefinidamente` como duración.
-5.  **Pestaña Acciones:** ¡Aquí es donde le decimos qué ejecutar\!
+2.  Crea una nueva tarea básica o una tarea completa.
+3.  **General:** Asigna un nombre (`Monitor de Tareas Epicor`) y descripción.
+4.  **Desencadenadores:** Configura que la tarea se repita, por ejemplo, **`cada 5 minutos`** (o el valor de `check_interval_minutes` en tu `config.ini`).
+5.  **Acciones:** ¡Aquí es donde le decimos qué ejecutar\!
       * Haz clic en **"Nuevo..."**.
       * **Acción:** `Iniciar un programa`.
       * **Programa o script:** La ruta **completa** al `python.exe` dentro de tu entorno virtual.
@@ -128,7 +134,7 @@ Esta aplicación está diseñada para ejecutarse periódicamente, ¡idealmente c
       * **Iniciar en (opcional):** La ruta **completa** a la carpeta raíz de tu proyecto (donde está `main.py` y `config.ini`).
           * Ejemplo: `C:\Users\TuUsuario\tu_app_monitoreo`
       * Haz clic en **"Aceptar"**.
-6.  **Pestaña Configuración:**
+6.  **Configuración:**
       * Te sugiero marcar `Detener la tarea si se ejecuta durante más de` (ej., 30 minutos) para evitar que se quede "colgada".
       * También, selecciona `No iniciar una nueva instancia` si la tarea ya se está ejecutando, para evitar duplicados.
 7.  Haz clic en **"Aceptar"** y proporciona las credenciales de un usuario del sistema que tenga permiso para ejecutar scripts y acceder a la red (si tu DB no está en la misma máquina).
@@ -139,7 +145,7 @@ Esta aplicación está diseñada para ejecutarse periódicamente, ¡idealmente c
 
 Gracias a su diseño modular, añadir nuevas funcionalidades es sencillo:
 
-  * **¡Más Categorías de Monitoreo\!** ¿Hay otro tipo de tarea Epicor que te interese vigilar? Crea una nueva "estrategia" (una clase que implemente `ITaskProcessingStrategy`) en `src/strategies/` y añádela a la lista en `main.py`. ¡Así de fácil\!
+  * **¡Más Categorías de Monitoreo\!** ¿Hay otro tipo de tarea Epicor que te interese vigilar? Crea una nueva "estrategia" (una clase que implemente `ITaskProcessingStrategy`) en `src/strategies/` y añádela a la lista de estrategias en `main.py`. ¡Así de fácil\!
   * **¡Más Formas de Notificar\!** ¿Prefieres alertas por correo electrónico o Microsoft Teams? Crea un nuevo "observador" (una clase que implemente `ITaskObserver`) en `src/observers/` y regístralo en `main.py`.
 
 ## 🤝 ¡Colabora\!
@@ -150,5 +156,3 @@ No dudes en abrir un *issue* o enviar un *pull request*.
 ## 📄 Licencia
 
 Este proyecto está liberado bajo la **Licencia MIT**. Consulta el archivo `LICENSE` para más detalles.
-
------
