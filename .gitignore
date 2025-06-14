@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Archivos de configuración y secretos (¡CRUCIALES!)
+.env
+config.ini.prod       # ¡Ignora tu archivo de configuración de producción/local!
+config.ini.local      # Otro nombre posible para el archivo de configuración local
+
+# Archivos de logs
+*.log
+logs/
