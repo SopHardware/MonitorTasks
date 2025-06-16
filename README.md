@@ -49,7 +49,7 @@ Para poner en marcha tu monitor, necesitarás algunos preparativos y una configu
 1.  **Clona el proyecto:**
 
     ```bash
-    git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/SopHardware/MonitorTasks)
+    git clone (https://github.com/SopHardware/MonitorTasks)
     cd tu-repositorio-monitoreo
     ```
 
